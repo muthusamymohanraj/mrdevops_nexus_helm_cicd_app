@@ -62,7 +62,7 @@ pipeline {
             steps {
                 script{
                     withCredentials([string(credentialsId: 'nexus_cred', variable: 'nexus_creds')]) {
-                        dir('kubernetes/myapp') {
+                        dir('kubernetes/') {
                         sh '''
                             helmversion=$(helm show chart myapp | grep version | cut -d: -f 2 | tr -d ' ')
                             tar -zxvf myapp-${helmversion}.tgz myapp/
