@@ -43,6 +43,19 @@ pipeline {
                 }
             }
         }
+        stage('Identifying misconfigs using datatree in hlem charts'){
+            stage {
+                steps {
+                    script {
+                        dir('kubernetes/myapp') {
+                            sh 'helm datree test .'
+                            
+
+                        }
+                    }
+                }
+            }
+        }
     }
     
     post {
